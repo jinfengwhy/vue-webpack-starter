@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h3>添加学生</h3>
+        <h3>编辑学生</h3>
         <form @submit.prevent="add">
             <div class="form-group">
                 <label for>姓名</label>
@@ -32,21 +32,16 @@ export default {
         }
     },
 
+    async created () {
+        // this.$router 访问到的是路由实例对象
+        // this.$route 访问到的是路由参数对象
+        // this.$route.query 获取查询字符串参数
+        const {id} = this.$route.query
+        const {data} = await axios.get(`http://127.0.0.1:3000/list/${id}`)
+        this.formData = data
+    },
+
     methods: {
-        add () {
-            // 1，注册表单提交事件及处理函数
-            // 2，配置表单验证
-            // 3，收集表单数据
-            // 4，提交表单，发起请求，添加学生
-            // 5，添加成功，跳转到列表页
-            //       编程式导航
-            axios.post('http://127.0.0.1:3000/list', this.formData)
-                .then ((res) => {
-                    if (res.status === 201) {
-                        this.$router.back()
-                    }
-                })
-        }
     }
 }
 </script>

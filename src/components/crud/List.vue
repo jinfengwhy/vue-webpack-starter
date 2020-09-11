@@ -18,7 +18,7 @@
 						<td>{{ item.name }}</td>
 						<td>{{ item.age }}</td>
 						<td>
-							<a href="#">编辑</a>
+							<router-link :to="`/crud/update?id=${item.id}`">编辑</router-link>
 							<a @click.prevent="deleteById(item.id)" href="#">删除</a>
 						</td>
 					</tr>
