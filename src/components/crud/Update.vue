@@ -1,7 +1,7 @@
 <template>
     <div>
         <h3>编辑学生</h3>
-        <form @submit.prevent="add">
+        <form @submit.prevent="update">
             <div class="form-group">
                 <label for>姓名</label>
                 <input required
@@ -42,6 +42,11 @@ export default {
     },
 
     methods: {
+        async update () {
+            const {id} = this.$route.query
+            const {data} = await axios.patch(`http://127.0.0.1:3000/list/${id}`, this.formData)
+            this.$router.back()
+        }
     }
 }
 </script>
