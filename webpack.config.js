@@ -38,7 +38,8 @@ module.exports = {
         // key 就是包名
         // value 是全局的 Vue 导出的接口
         vue: 'Vue',
-        'vue-router': 'VueRouter'
+        'vue-router': 'VueRouter',
+        axios: 'axios'
     },
     module: {
         rules: [
