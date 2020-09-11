@@ -1,6 +1,7 @@
 <template>
 	<div>
-		<a class="btn btn-success" href="/crud/new" style="margin-bottom: 10px;">添加学生</a>
+		<!-- <a class="btn btn-success" href="/crud/new" style="margin-bottom: 10px;">添加学生</a> -->
+        <router-link class="btn btn-success" to="/crud/new" style="margin-bottom: 10px;">添加学生</router-link>
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
