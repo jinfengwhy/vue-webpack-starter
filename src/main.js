@@ -2,8 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 
-console.log(11)
-console.log(router)
+import './assets/css/main.css'
 
 new Vue({
     components: {
