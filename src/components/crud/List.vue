@@ -19,7 +19,7 @@
 						<td>{{ item.age }}</td>
 						<td>
 							<a href="#">编辑</a>
-							<a href="#">删除</a>
+							<a @click.prevent="deleteById(item.id)" href="#">删除</a>
 						</td>
 					</tr>
 				</tbody>
@@ -53,8 +53,28 @@ export default {
         // })
 
         // 异步 API 写起来像同步代码一样
-        let res = await axios.get('http://127.0.0.1:3000/list')
-        this.list = res.data
-    },  
+        this.loadList()
+	},
+	
+	methods: {
+		// 单独封装成方法，是为了可以重用
+		async loadList () {
+			let res = await axios.get('http://127.0.0.1:3000/list')
+        	this.list = res.data
+		},
+
+		deleteById (id) {
+			// 1，绑定注册删除事件处理函数	
+			// 2，发起请求删除数据	
+			// 3，根据响应结果来处理	
+			axios.delete(`http://127.0.0.1:3000/list/${id}`)
+				.then(() => {
+					if (!window.confirm('确定要删除吗？')) {
+						return
+					}
+					this.loadList()
+				})
+		}
+	}
 }
 </script>
