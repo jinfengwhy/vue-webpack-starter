@@ -5,6 +5,7 @@ import CrudNew from './components/crud/New.vue'
 import CrudUpdate from './components/crud/Update.vue'
 
 export default new VueRouter({
+    linkActiveClass: 'active',
     routes: [
         {
             path: '/',
